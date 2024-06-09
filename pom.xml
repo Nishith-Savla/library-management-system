@@ -17,24 +17,42 @@
 		<java.version>17</java.version>
 	</properties>
 	<dependencies>
+		<!-- Spring Boot Starter Data JPA -->
+		<!-- Simplifies setting up a Spring application by automatically including all necessary libraries and configurations for JPA and Hibernate. -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
+
+		<!-- Spring Boot Starter Web -->
+		<!-- Simplifies setting up a Spring application by automatically including all necessary libraries and configurations for web development with Spring MVC and embedded Tomcat. -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
+		<!-- H2 Database -->
+		<!-- Provides an in-memory database useful for development and testing purposes. -->
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+
+		<!-- Spring Boot Starter Test -->
+		<!-- Simplifies setting up a testing environment by automatically including libraries and configurations for testing Spring applications. -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+
+		<!-- Springdoc OpenAPI Starter for WebMVC -->
+		<!-- Provides easy integration of Spring Boot applications with OpenAPI 3.0 (Swagger) for generating API documentation. -->
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+			<version>2.5.0</version>
 		</dependency>
 	</dependencies>
 
