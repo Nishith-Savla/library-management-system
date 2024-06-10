@@ -4,13 +4,23 @@ import com.group35.library_management_system.model.*;
 import com.group35.library_management_system.repository.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
 import java.util.List;
 
+@Configuration
 public class DBInitializer_Items {
     @Bean
-    CommandLineRunner initDatabase(BookRepository bookRepository, DVDRepository dvdRepository, CDRepository cdRepository, PeriodicalRepository periodicalRepository) {
+    CommandLineRunner initDatabase(UserRepository userRepository, BookRepository bookRepository, DVDRepository dvdRepository, CDRepository cdRepository, PeriodicalRepository periodicalRepository) {
         return args -> {
+            // Create a list of sample users
+            var users = List.of(
+                    new User("Alice", "alice@example.com"),
+                    new User("Bob", "bob@example.com"),
+                    new User("Charlie", "charlie@example.com")
+            );
+            // Save all users to the database
+            userRepository.saveAll(users);
 
             // Create a list of sample books
             var books = List.of(

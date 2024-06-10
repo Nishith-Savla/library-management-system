@@ -5,6 +5,8 @@ import com.group35.library_management_system.model.BorrowingEntry;
 import com.group35.library_management_system.repository.BookRepository;
 import com.group35.library_management_system.repository.BorrowingEntryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
@@ -73,7 +75,7 @@ public class BookController {
             Creates a new BorrowingEntry entity in the database
          */
         BorrowingEntry borrowingEntry = borrowingEntryRepository.findById(id).orElse(null);
-        if (borrowingEntry == null) {
+        if (borrowingEntry == null || borrowingEntry.getReturnDate() != null) {
             Book book = bookRepository.findById(id).orElse(null);
             if (book != null) {
                 bookRepository.save(book);
@@ -84,14 +86,15 @@ public class BookController {
     }
 
     @PostMapping("/{id}/return") // Maps HTTP POST requests to /api/users to this method
-    public void returnBook(@PathVariable long id, @RequestBody long userId) {
+    public BorrowingEntry returnBook(@PathVariable long id, @RequestBody long userId) {
         /*
             Updates the BorrowingEntry entity with the given id in the database
          */
         BorrowingEntry borrowingEntry = borrowingEntryRepository.findById(id).orElse(null);
-        if (borrowingEntry != null && borrowingEntry.getUserId() == userId) {
+        if (borrowingEntry != null && borrowingEntry.getUserId() == userId && borrowingEntry.getReturnDate() == null) {
             borrowingEntry.setReturnDate(new Date().toString());
-            borrowingEntryRepository.save(borrowingEntry);
+            return borrowingEntryRepository.save(borrowingEntry);
         }
+        return null;
     }
 }
