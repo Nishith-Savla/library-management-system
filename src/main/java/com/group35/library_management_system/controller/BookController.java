@@ -5,14 +5,13 @@ import com.group35.library_management_system.model.BorrowingEntry;
 import com.group35.library_management_system.repository.BookRepository;
 import com.group35.library_management_system.repository.BorrowingEntryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.List;
 
 @RestController // Indicates that this class is a Spring MVC controller
+@CrossOrigin
 @RequestMapping("/api/books") // Maps HTTP requests to /api/users to this class
 public class BookController {
 

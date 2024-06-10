@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController // Indicates that this class is a Spring MVC controller
+@CrossOrigin
 @RequestMapping("/api/periodicals") // Maps HTTP requests to /api/users to this class
 public class PeriodicalController {
 
